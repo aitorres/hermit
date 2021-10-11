@@ -1,0 +1,60 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           hermit
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/aitorres/hermit#readme>
+homepage:       https://github.com/aitorres/hermit#readme
+bug-reports:    https://github.com/aitorres/hermit/issues
+author:         Andrés Ignacio Torres
+maintainer:     dev@aitorres.com
+copyright:      2021 Andrés Ignacio Torres
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/aitorres/hermit
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_hermit
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable hermit-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_hermit
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hermit
+  default-language: Haskell2010
+
+test-suite hermit-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_hermit
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hermit
+  default-language: Haskell2010
