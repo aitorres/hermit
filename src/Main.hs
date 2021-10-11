@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import App.Hermit
 
 main :: IO ()
 main = someFunc
