@@ -25,7 +25,6 @@ source-repository head
 
 library
   exposed-modules:
-      App.CLI
       App.Hermit
       Main
   other-modules:
@@ -40,7 +39,6 @@ library
 executable hermit-exe
   main-is: Main.hs
   other-modules:
-      App.CLI
       App.Hermit
       Paths_hermit
   hs-source-dirs:
