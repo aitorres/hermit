@@ -25,12 +25,36 @@ dependencies:
 
 library:
   source-dirs: src
+  ghc-options:
+    - -O2
+    - -Wall
+    - -Wincomplete-uni-patterns
+    - -Wincomplete-record-updates
+    - -Wcompat
+    - -Widentities
+    - -Wredundant-constraints
+    - -Wmissing-export-lists
+    - -Wpartial-fields
+    - -fwarn-unused-imports
+
+  build-tools:
+    - hlint
 
 executables:
   hermit-exe:
     main:                Main.hs
     source-dirs:         src
     ghc-options:
+    - -O2
+    - -Wall
+    - -Wincomplete-uni-patterns
+    - -Wincomplete-record-updates
+    - -Wcompat
+    - -Widentities
+    - -Wredundant-constraints
+    - -Wmissing-export-lists
+    - -Wpartial-fields
+    - -fwarn-unused-imports
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
@@ -38,12 +62,22 @@ executables:
     - hermit
 
 tests:
-  hermit-test:
+  app-test:
     main:                Spec.hs
-    source-dirs:         test
+    source-dirs:         test/TestApp
     ghc-options:
+    - -O2
+    - -Wall
+    - -Wincomplete-record-updates
+    - -Wcompat
+    - -Widentities
+    - -Wredundant-constraints
+    - -Wpartial-fields
+    - -fwarn-unused-imports
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
     - hermit
+    - hspec
+    - hspec-discover
