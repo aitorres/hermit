@@ -1,6 +1,4 @@
-module App.Hermit
-    ( hermit
-    ) where
+module App.Hermit where
 
 import Options.Applicative
 import Data.Semigroup ((<>))
@@ -10,12 +8,12 @@ import Data.Semigroup ((<>))
 data Options = Options
   { optPort :: Int -- ^ Port to use when running the server
   , optQuiet :: Bool -- ^ Whether or not to be verbose on output display
-  }
+  } deriving (Eq, Show)
 
 
 -- | Returns an `Option` `Parser` that wraps Hermit's `Options` record
-getOptionsParser :: Parser Options
-getOptionsParser = Options
+getOptionsBaseParser :: Parser Options
+getOptionsBaseParser = Options
   <$> option auto
       ( long "port"
       <> short 'p'
@@ -28,15 +26,16 @@ getOptionsParser = Options
       <> short 'q'
       <> help "Whether to be quiet" )
 
+getOptionsParser :: ParserInfo Options
+getOptionsParser = info (getOptionsBaseParser <**> helper)
+  ( fullDesc
+  <> progDesc "Serve files through HTTP using Hermit"
+  <> header "hermit - an HTTP server written in Haskell" )
+
 
 -- | Parses input arguments and sends them to `runHermit`
 runCli :: IO ()
-runCli = runHermit =<< execParser opts
-  where
-    opts = info (getOptionsParser <**> helper)
-      ( fullDesc
-     <> progDesc "Serve files through HTTP using Hermit"
-     <> header "hermit - an HTTP server written in Haskell" )
+runCli = runHermit =<< execParser getOptionsParser
 
 
 -- | Given a set of valid CLI arguments, starts Hermit
