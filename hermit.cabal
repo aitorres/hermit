@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      App.CLI
       App.Hermit
       Main
   other-modules:
@@ -33,11 +34,13 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , optparse-applicative
   default-language: Haskell2010
 
 executable hermit-exe
   main-is: Main.hs
   other-modules:
+      App.CLI
       App.Hermit
       Paths_hermit
   hs-source-dirs:
@@ -46,6 +49,7 @@ executable hermit-exe
   build-depends:
       base >=4.7 && <5
     , hermit
+    , optparse-applicative
   default-language: Haskell2010
 
 test-suite hermit-test
@@ -59,4 +63,5 @@ test-suite hermit-test
   build-depends:
       base >=4.7 && <5
     , hermit
+    , optparse-applicative
   default-language: Haskell2010
