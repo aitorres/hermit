@@ -1,7 +1,10 @@
-module App.Hermit where
+module App.Hermit (
+  hermit,
+  getOptionsParser,
+  Options(..),
+) where
 
 import Options.Applicative
-import Data.Semigroup ((<>))
 
 
 -- | Record that stores all the options required by Hermit's CLI
@@ -26,6 +29,8 @@ getOptionsBaseParser = Options
       <> short 'q'
       <> help "Whether to be quiet" )
 
+
+-- | Returns an `Options` `ParserInfo` extending from `getOptionsBaseParser` with Hermit's info
 getOptionsParser :: ParserInfo Options
 getOptionsParser = info (getOptionsBaseParser <**> helper)
   ( fullDesc
