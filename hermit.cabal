@@ -32,8 +32,6 @@ library
   hs-source-dirs:
       src
   ghc-options: -O2 -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -Wmissing-export-lists -Wpartial-fields -fwarn-unused-imports
-  build-tool-depends:
-      hlint:hlint
   build-depends:
       base >=4.7 && <5
     , optparse-applicative

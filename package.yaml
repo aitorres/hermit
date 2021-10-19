@@ -37,9 +37,6 @@ library:
     - -Wpartial-fields
     - -fwarn-unused-imports
 
-  build-tools:
-    - hlint
-
 executables:
   hermit-exe:
     main:                Main.hs
